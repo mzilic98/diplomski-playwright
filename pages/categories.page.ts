@@ -42,7 +42,7 @@ export class Categories {
     this.phoneCoverTitle = page.getByRole('link', { name: 'Phone Cover', exact: true });
     this.priceCheck = page.locator(".price.actual-price");
     // mission impossible locirati ovaj add to cart btn, test fejla
-    this.addToCartBtn = page.locator('div').filter({ hasText: '130.00 Add to cart' }).getByRole('button', { name: 'Add to cart' });
+    this.addToCartBtn = page.locator('div').filter({ hasText: '100.00 Add to cart' }).getByRole('button', { name: 'Add to cart' }).first();
     this.shoppingCart = page.getByRole('link', { name: 'Shopping cart (1)' });
     this.sortBy = page.locator('#products-orderby')
 

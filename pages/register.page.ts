@@ -36,7 +36,6 @@ export class Register {
   constructor(page: Page) {
     this.page = page;
     this.registerBtn = page.locator("#register-button");
-    // getByRole('button', { name: 'Register' });
     this.genderLabel = page.getByText("Gender:");
     this.maleCheckbox = page.getByLabel("Male", { exact: true });
     this.femaleCheckbox = page.getByLabel("Female");
@@ -62,7 +61,7 @@ export class Register {
     // Registration completed elements
     this.registrationCompleted = page.getByText('Your registration completed');
     this.continueBtn = page.getByRole('button', { name: 'Continue'});
-    this.registrationConfirmed = page.getByPlaceholder('name@example.com');
+    // this.registrationConfirmed = page.getByPlaceholder('name@example.com'); - ovo sam ja nesto pokusavala, ignore
 
     // invalid email
     this.invalidEmail = page.getByText('Wrong email');

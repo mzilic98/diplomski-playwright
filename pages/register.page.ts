@@ -35,7 +35,8 @@ export class Register {
   //konstruktor u kojemu dodjeljuemo vrijednosti pojedinim varijablama koje su definirane iznad
   constructor(page: Page) {
     this.page = page;
-    this.registerBtn = page.getByRole('button', { name: 'Register' });
+    this.registerBtn = page.locator("#register-button");
+    // getByRole('button', { name: 'Register' });
     this.genderLabel = page.getByText("Gender:");
     this.maleCheckbox = page.getByLabel("Male", { exact: true });
     this.femaleCheckbox = page.getByLabel("Female");
@@ -67,7 +68,8 @@ export class Register {
     this.invalidEmail = page.getByText('Wrong email');
 
     // Email already in use 
-    this.emailInUse = page.getByText('The specified email already exists');
+    this.emailInUse = page.locator(".message-error");
+    // getByText('The specified email already exists');
 
     // Password minimum
     this.passwordMinimum = page.getByText('The password should have at least 6 characters. ');

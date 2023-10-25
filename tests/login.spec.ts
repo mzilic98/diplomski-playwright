@@ -105,6 +105,7 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
       // Ovo fejla zato sto se korisnik izlogira nakon closeanja browsera
       // ipak smo u incognitu 
       // al kak da onda provjeirm jel radi taj feature?
+      // local storage
       await expect(login.loggedInUserMail).toBeVisible();
       await page.pause();
       await page.close();

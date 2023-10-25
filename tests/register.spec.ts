@@ -26,26 +26,26 @@ test.describe("Verify that registration of the Demo web shop page works as inten
     // await page.pause();
   });
 
-  // test("TEST 2 Verify that user can successfully register if valid data is given", async ({
-  //   page,
-  // }) => {
-  //   await register.femaleCheckbox.click();
-  //   await page.pause();
-  //   await register.firstNameInput.fill("Marija");
-  //   await register.lastNameInput.fill("QA");
-  //   // on ce ovdje izgenerirat, ak na kraju izbaci error, ponovi funkciju
-  //   // question is, how to do that hahah
-  //   await generateUniqueUserEmail(page, "mpw");
-  //   // await register.passwordInput.fill("dipl987");
-  //   // await register.confirmPasswordInput.fill("dipl987");
-  //   // await register.registerBtn.click();
+  test("TEST 2 Verify that user can successfully register if valid data is given", async ({
+    page,
+  }) => {
+    await register.femaleCheckbox.click();
+    await page.pause();
+    await register.firstNameInput.fill("Marija");
+    await register.lastNameInput.fill("QA");
+    // on ce ovdje izgenerirat, ak na kraju izbaci error, ponovi funkciju
+    // question is, how to do that hahah
+    await generateUniqueUserEmail(page, "mpw");
+    // await register.passwordInput.fill("dipl987");
+    // await register.confirmPasswordInput.fill("dipl987");
+    // await register.registerBtn.click();
 
-  //   await expect(page).toHaveURL('https://demowebshop.tricentis.com/registerresult/1');  
-  //   await expect(register.registrationCompleted).toBeVisible();
-  //   await expect(register.continueBtn).toBeVisible();
-  //   // await expect(register.registrationConfirmed).toBeVisible();
+    await expect(page).toHaveURL('https://demowebshop.tricentis.com/registerresult/1');  
+    await expect(register.registrationCompleted).toBeVisible();
+    await expect(register.continueBtn).toBeVisible();
+    // await expect(register.registrationConfirmed).toBeVisible();
 
-  // });
+  });
 
   // Note: možeš napraviti isti test case samo sa male checkboxom gore ili bar provjerit jel clickable
 

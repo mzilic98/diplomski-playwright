@@ -76,7 +76,7 @@ test.describe("Verify that the categories of the Demo web shop page work as inte
     await expect(page).toHaveURL('https://demowebshop.tricentis.com/cell-phones');   
     await page.pause();
 
-    // za ovo bi mogla funkciju novu napravit pa ju pozvat i ovdje
+    // za ovo bi mogla funkciju novu napravit pa ju pozvat i ovdje - NE NE BUŠ
     await page.waitForLoadState();
     const productCount = (await page.$$('.product-item')).length;
     expect(productCount).toBeGreaterThan(0);
@@ -94,10 +94,10 @@ test.describe("Verify that the categories of the Demo web shop page work as inte
     page,
   }) => {
 
-    // mission impossible locirati ovaj add to cart btn i zato fejla
+    // ovo je locirano, dovrši test!!
     await categories.jewelry.click();
     await expect(page).toHaveURL('https://demowebshop.tricentis.com/jewelry');   
-    // await page.pause();
+    await page.pause();
     await expect(categories.addToCartBtn).toBeEnabled();
     // await page.pause();
 
@@ -116,6 +116,8 @@ test.describe("Verify that the categories of the Demo web shop page work as inte
     page,
   }) => {
 
+    // napravi screenshot!!
+
     // mission impossible locirati ovaj add to cart btn i zato fejla
     await categories.digitalDownloads.click();
     await expect(page).toHaveURL('https://demowebshop.tricentis.com/digital-downloads');   
@@ -125,7 +127,9 @@ test.describe("Verify that the categories of the Demo web shop page work as inte
     // await categories.sortBy).();
     await page.pause();
     // ovdje dodat neki bolji expect da bi provjerili jel radi
-    await expect(page).toHaveURL('https://demowebshop.tricentis.com/digital-downloads?orderby=10');   
+    await expect(page).toHaveURL('https://demowebshop.tricentis.com/digital-downloads?orderby=10'); 
+    
+    // napravi screenshot!!
 
     
   });

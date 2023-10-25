@@ -1,8 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { Product } from "../pages/product.page";
 
-// ideas:
-
 
 test.describe("Verify that the product behavior of the Demo web shop page work as intended", () => {
   let product: Product;
@@ -45,19 +43,24 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
 
   });
 
-  test("TEST 5 Verify that the user can change the quantity of the product", async ({
+  // ovo PONOVNO PROĐI
+  test.only("TEST 5 Verify that the user can change the quantity of the product", async ({
     page,
   }) => {
 
   await expect(product.qtyLabel).toBeVisible();
   await expect(product.qtyInput).toBeVisible();
   await expect(product.qtyInput).toBeVisible();
+  await page.pause();
 
   await page?.fill('input#addtocart_36_EnteredQuantity', '');;
-  const qtyValue = await product.qtyInput.fill("3");
+  await product.qtyInput.fill("3");
+  await page.pause();
   
   // zaš ovaj ispod expect fejlaaaaa???????? :angry-bird:
-  // expect(qtyValue).nez kaj da koristim jer niš ne radi(3);
+  console.log(product.qtyInput);
+  await page.pause();
+  await expect(page.getByLabel('Qty:')).toHaveText("3");
   // await page.pause();
   });
  

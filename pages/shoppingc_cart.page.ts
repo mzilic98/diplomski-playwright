@@ -21,6 +21,20 @@ export class Shopping_cart {
   readonly secondItemPrice: Locator;
   readonly subtotal: Locator;
   readonly checkoutAsGuestBtn: Locator;
+  readonly continueCheckoutBtn: Locator;
+  readonly confirmBtn: Locator;
+  readonly successMessage: Locator;
+
+  // Billing 
+  readonly firstNameInput: Locator;
+  readonly lastNameInput: Locator;
+  readonly emailInput: Locator;
+  readonly countryInput: Locator;
+  readonly cityInput: Locator;
+  readonly addresInput: Locator;
+  readonly postalCodeInput: Locator;
+  readonly phoneNumberInput: Locator;
+  
 
   constructor(page: Page) {
     this.page = page;
@@ -61,6 +75,20 @@ export class Shopping_cart {
     this.checkoutAsGuestBtn = page.getByRole("button", {
       name: "Checkout as Guest",
     });
+    // Billing
+    this.firstNameInput = page.getByLabel('First name:');
+    this.lastNameInput = page.getByLabel('Last name:');
+    this.emailInput = page.getByLabel('Email:');
+    this.countryInput = page.getByRole('combobox', { name: 'Country:' });
+    this.cityInput = page.getByLabel('City:');
+    this.addresInput = page.getByLabel('Address 1:');
+    this.postalCodeInput = page.getByLabel('Zip / postal code:');
+    this.phoneNumberInput = page.getByLabel('Phone number:');
+    this.continueCheckoutBtn = page.getByRole('button', { name: 'Continue' });
+    
+    this.confirmBtn = page.getByRole('button', { name: 'Confirm' });
+    this.successMessage = page.getByText('Your order has been successfully processed!');
+
   }
   //Review
   //Dodala sam ovaj load ovdje da vidimo hoce ovo popraviti flakyness testova

@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { Shopping_cart } from "../pages/shoppingc_cart.page";
 
-// FLAKY TESTS!!
+// RIJEŠENOOO
 
 test.describe("Verify that the shopping cart behavior of the Demo web shop page work as intended", () => {
   let shopping_cart: Shopping_cart;
@@ -69,18 +69,41 @@ test.describe("Verify that the shopping cart behavior of the Demo web shop page 
     await expect(shopping_cart.termsOfServiceWarningBox).toBeVisible();
   });
 
-  test("TEST 7 Verify that the Checkout button is working correctly", async ({
+  test("TEST 7 Verify the ability to complete a purchase successfully", async ({
     page,
   }) => {
     await shopping_cart.termsOfServiceCheckbox.click();
+    // await page.pause();
     await shopping_cart.checkoutBtn.click();
-    await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/login/checkoutasguest?returnUrl=%2Fcart"
-    );
+    // await page.pause();
     await shopping_cart.checkoutAsGuestBtn.click();
-    await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/onepagecheckout"
-    );
+    // await page.pause();
+    
+
+    await shopping_cart.firstNameInput.fill("Marija");
+    await shopping_cart.lastNameInput.fill("QA");
+    await shopping_cart.emailInput.fill("mpw@gmail.com");
+    await shopping_cart.countryInput.selectOption("Croatia");
+    await shopping_cart.cityInput.fill("Osijek");
+    await shopping_cart.addresInput.fill("Ul. Lorenza Jagera");
+    await shopping_cart.postalCodeInput.fill("31000");
+    await shopping_cart.phoneNumberInput.fill("987283947");
+    await shopping_cart.continueCheckoutBtn.click();
+    await page.waitForTimeout(1000);
+    
+    await shopping_cart.continueCheckoutBtn.click();
+    await page.waitForTimeout(1000);
+
+    await shopping_cart.continueCheckoutBtn.click();
+   
+    await shopping_cart.confirmBtn.click();
+
+    await expect(shopping_cart.successMessage).toBeVisible();
+
+
+
+    
+    // MŽ com: obavljena kupovina u testu 7! :D 
     //Review
     // ovo ovdje nisi pokušala popunit sa podacima da se bas obavi kupovina? ili je tu bio neki implementirani bug?
   });
@@ -88,6 +111,7 @@ test.describe("Verify that the shopping cart behavior of the Demo web shop page 
   test("TEST 8 Verify that the empty state of the shopping cart is displayed correctly", async ({
     page,
   }) => {
+    await page.pause();
     await shopping_cart.removeCheckbox.click();
     await shopping_cart.updateShoppingCartBtn.click();
     await expect(shopping_cart.informativeMessage).toBeVisible();

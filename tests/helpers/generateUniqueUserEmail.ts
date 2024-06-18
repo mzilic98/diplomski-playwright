@@ -10,33 +10,37 @@ export async function generateUniqueUserEmail(page, email: string): Promise<stri
     // await page.pause();
    
     await page?.fill("#Email", checkedEmail);
-    await page?.fill("#Password", "dipl987");
-    await page?.fill("#ConfirmPassword", "dipl987");
-    await page?.click("#register-button");
+    await page?.fill("#Password", "hjrks987");
+    await page?.fill("#ConfirmPassword", "hjrks987");
+    await page?.click("#register-button"); 
 
-    // Provjerite je li prikazana poruka o grešci za već korištenu e-mail adresu
-    // ovdje mi padne, ne znam kako locirati message error
-    const errorMessage = await page?.textContent(".message-error");
+    // OVO RADIIIIII - malo duze traje jer sam postavila timoute ali bitno da radi!!
+    const errorMessageElement = await page.waitForSelector(".message-error", { timeout: 2000 }).catch(() => null);
+    const registrationCompletedElement = await page.waitForSelector(".result", { timeout: 2000 }).catch(() => null);
 
-    if (errorMessage?.includes("The specified email already exists")) {
-      number++;
-      await page?.fill("#Email", ""); // Izbrišite polje prije ponovnog unosa
-    //   generateUniqueUserEmail(page, `${email}+${number}@gmail.com`);
-    } else {
-      return checkedEmail;
+    if (errorMessageElement) {
+      const errorMessage = await errorMessageElement.textContent(".message-error");
+      if (errorMessage?.includes("The specified email already exists")) {
+        number++;
+        await page.fill("#Email", ""); 
+      }
+    } else if (registrationCompletedElement) {
       
-    //   break; // Registracija uspješna
+      const registrationCompletedText = await registrationCompletedElement.textContent(".result");
+      if (registrationCompletedText?.includes("Your registration completed")) {
+        return checkedEmail;
+      }
+    } else {
+      
+      throw new Error("Neither error message nor registration completion message was found.");
     }
+
     
   }
-  // ovo bi trebo bit zadnji expect
-  // await expect(page.registrationCompleted).toBeVisible();
-
-//  ovo dela, samo što još treba dodati kad napokon pronađe adresu koja
-//  ne postoji i registrira se onda da završi proces
-// jer kad pronađe adresu opet dođe do const errormessage na liniji 19 i timeouta
+  
 }
 
-// ?. = optional chaining
+
+
 
 

@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { Register } from "../pages/register.page";
 import { generateUniqueUserEmail } from "./helpers/generateUniqueUserEmail";
-
+// RIJEŠEEEEENOOOOO
 test.describe("Verify that registration of the Demo web shop page works as intended", () => {
   let register: Register;
 
@@ -22,30 +22,26 @@ test.describe("Verify that registration of the Demo web shop page works as inten
     await expect(register.registerBtn).toBeVisible();
   });
 
-  test.fixme(
+
+  test(
     "TEST 2 Verify that user can successfully register if valid data is given",
     async ({ page }) => {
       await register.femaleCheckbox.click();
-      await page.pause();
+      // await page.pause();
       await register.firstNameInput.fill("Marija");
       await register.lastNameInput.fill("QA");
-      // on ce ovdje izgenerirat, ak na kraju izbaci error, ponovi funkciju
-      // question is, how to do that hahah
-      await generateUniqueUserEmail(page, "mpw");
-      // await register.passwordInput.fill("dipl987");
-      // await register.confirmPasswordInput.fill("dipl987");
-      // await register.registerBtn.click();
+      await generateUniqueUserEmail(page, "mpw2");
+      
 
       await expect(page).toHaveURL(
         "https://demowebshop.tricentis.com/registerresult/1"
       );
       await expect(register.registrationCompleted).toBeVisible();
       await expect(register.continueBtn).toBeVisible();
-      // await expect(register.registrationConfirmed).toBeVisible();
+      
     }
   );
 
-  // Note: možeš napraviti isti test case samo sa male checkboxom gore ili bar provjerit jel clickable
 
   test("TEST 3 Verify email input error message if the email form is invalid", async ({
     page,
@@ -100,17 +96,7 @@ test.describe("Verify that registration of the Demo web shop page works as inten
     await expect(register.registrationCompleted).toBeHidden();
   });
 
+  // MŽ q: od ovog testa 7 odustajem, nema mi bas smisla taj test sad
   // TEST 7 -registracija s istim mailom nakon sto prvi put izbaci error
   //  ovaj test će failat zato što je to bug na stranici
-
-  // trebam skuzit kak da kreiram funkciju za email
-  // koja će uvijek koristiti dosad ne korištenu email adresu, baciti error
-  // i onda ponovno koristiti istu mail adresu da bi se registrirao
-
-  // VRATIT SE NA OVO!!!
-  //   test("TEST 7 Verify if you can register with the same email address if the system initially threw an error during registration.", async ({
-  //     page,
-  //   }) => {
-
-  //  });
 });

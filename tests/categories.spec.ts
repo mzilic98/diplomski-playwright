@@ -1,8 +1,9 @@
 import { test, expect } from "@playwright/test";
 import { Categories } from "../pages/categories.page";
 
+// OVO JE DONE - PROVJERIT S MARIJOM ZA TEST 6
 test.describe
-  .only("Verify that the categories of the Demo web shop page work as intended", () => {
+  ("Verify that the categories of the Demo web shop page work as intended", () => {
   let categories: Categories;
   test.beforeEach(async ({ page }) => {
     categories = new Categories(page);
@@ -27,10 +28,7 @@ test.describe
     await expect(page).toHaveURL(
       "https://demowebshop.tricentis.com/cell-phones"
     );
-    // provjera jel postoje proizvodi i koliko ih je
-    // ovo je proslooooooooo!! :D
-    // Maria nemoj me ubit sto koristim klasu kao lokator
-    // NECU :P
+
     await page.waitForLoadState();
     const productCount = (await page.$$(".product-item")).length;
     expect(productCount).toBeGreaterThan(0);
@@ -56,7 +54,7 @@ test.describe
     await expect(page).toHaveURL(
       "https://demowebshop.tricentis.com/cell-phones"
     );
-    // za ovo bi mogla funkciju novu napravit pa ju pozvat i ovdje - NE NE BUŠ
+
     await page.waitForLoadState();
     const productCount = (await page.$$(".product-item")).length;
     expect(productCount).toBeGreaterThan(0);
@@ -66,12 +64,14 @@ test.describe
     expect(productCount).toBe(priceCheck);
   });
 
-  test.fixme(
+  // fixed
+  test(
     "TEST 5 Verify that the Add to cart button is clickable",
     async ({ page }) => {
-      // ovo je locirano, dovrši test!!
-      await categories.jewelry.click();
-      await expect(page).toHaveURL("https://demowebshop.tricentis.com/jewelry");
+      await categories.digitalDownloads.click();
+      // await page.pause();
+
+      await expect(page).toHaveURL("https://demowebshop.tricentis.com/digital-downloads");
       await expect(categories.addToCartBtn).toBeEnabled();
       // await page.pause();
 
@@ -83,20 +83,31 @@ test.describe
     }
   );
 
-  // NEMOJ ZABORAVIT NA OVO!!
-  test.fixme(
+  // Ovo prolazi, screenshoti su dodani, ali se trebam konzultirat s komentoricom za dalje
+  test(
     "TEST 6 Verify that the Sort by feature works as expected",
     async ({ page }) => {
       // napravi screenshot!!
-      // mission impossible locirati ovaj add to cart btn i zato fejla
+      // await expect(page).toHaveScreenshot();
+      // await page.pause();
+      await page.pause();
+      
       await categories.digitalDownloads.click();
       await expect(page).toHaveURL(
         "https://demowebshop.tricentis.com/digital-downloads"
       );
 
+      await page.screenshot({ path: 'screenshot_before.png' });
+      await page.pause();
+
       await categories.sortBy.selectOption("Price: Low to High");
       // await categories.sortBy).();
       // ovdje dodat neki bolji expect da bi provjerili jel radi
+      await page.pause();
+
+      await page.screenshot({ path: 'screenshot_after.png' });
+      await page.pause();
+
       await expect(page).toHaveURL(
         "https://demowebshop.tricentis.com/digital-downloads?orderby=10"
       );
@@ -104,9 +115,5 @@ test.describe
     }
   );
 
-  // Filter by price? isto bih mogla ubacit
-  // https://demowebshop.tricentis.com/books
-  // 25-50, da bude 0 produkata
-  // Review
-  //ovo samo ako zelis, mislim da imas sasvim dovoljno svega
+
 });

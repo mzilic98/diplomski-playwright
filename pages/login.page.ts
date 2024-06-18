@@ -23,6 +23,7 @@ export class Login {
   readonly emailNotFoundMessage: Locator;
 
 
+
   constructor(page: Page) {
     this.page = page;
     this.loginBtn = page.getByRole('button', { name: 'Log in' });
@@ -44,7 +45,8 @@ export class Login {
     this.recoverBtn = page.getByRole('button', { name: 'Recover' });
     this.successMessage = page.getByText('Email with instructions has been sent to you.');
     this.wrongEmailMessage = page.getByText('Wrong email');
-    this.emailNotFoundMessage = page.getByText('Email not found.')
+    this.emailNotFoundMessage = page.getByText('Email not found.');
+    
 
 
   };

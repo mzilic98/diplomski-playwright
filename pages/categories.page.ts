@@ -22,7 +22,6 @@ export class Categories {
   readonly shoppingCart: Locator;
   readonly sortBy: Locator;
 
-
   constructor(page: Page) {
     this.page = page;
     this.books = page.getByRole('list').filter({ hasText: 'Books Computers Desktops Notebooks Accessories Electronics Camera, photo Cell ph' }).getByRole('link', { name: 'Books' });

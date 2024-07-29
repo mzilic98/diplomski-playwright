@@ -1,9 +1,7 @@
 import { Locator, Page } from "@playwright/test";
 
 export class Register {
-  //page uvijek na vrhu svake klase
   readonly page: Page;
-  //ispod page-a krećemo sa definiranjem varijabli za nase selectore/lokatore
   readonly registerBtn: Locator;
   readonly genderLabel: Locator;
   readonly maleCheckbox: Locator;
@@ -31,8 +29,6 @@ export class Register {
   readonly passwordMinimum: Locator;
   readonly passwordNotMatch: Locator;
    
-
-  //konstruktor u kojemu dodjeljuemo vrijednosti pojedinim varijablama koje su definirane iznad
   constructor(page: Page) {
     this.page = page;
     this.registerBtn = page.locator("#register-button");
@@ -49,35 +45,17 @@ export class Register {
     this.passwordInput = page.locator("#Password");
     this.confirmPasswordLabel = page.locator('[for="ConfirmPassword"]');
     this.confirmPasswordInput = page.locator("#ConfirmPassword");
-    
-
-    // Validation elements.
     this.firstNameValidationElement = page.getByText('First name is required.');
     this.lastNameValidationElement = page.getByText('Last name is required.');
     this.emailValidationElement = page.getByText('Email is required.');
     this.passwordValidationElement = page.getByText('Password is required.').first();
     this.confirmPasswordValidationElement = page.getByText('Password is required.').nth(1);
-
-    // Registration completed elements
     this.registrationCompleted = page.getByText('Your registration completed');
     this.continueBtn = page.getByRole('button', { name: 'Continue'});
-    // this.registrationConfirmed = page.getByPlaceholder('name@example.com'); - ovo sam ja nesto pokusavala, ignore
-
-    // invalid email
     this.invalidEmail = page.getByText('Wrong email');
-
-    // Email already in use 
     this.emailInUse = page.locator(".message-error");
-    // getByText('The specified email already exists');
-
-    // Password minimum
     this.passwordMinimum = page.getByText('The password should have at least 6 characters. ');
-    
-    // Passwords not matching
     this.passwordNotMatch = page.getByText('The password and confirmation password do not match. ');
-
-    // Logout button, još ću vidjet hoću ga ovdje ili kod logina stavit
-
   }
 
   async goto() {

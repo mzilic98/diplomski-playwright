@@ -15,9 +15,8 @@ export class Product {
   readonly shoppingCart: Locator;
   readonly addToCartSucces: Locator;
 
-
   constructor(page: Page) {
-    this.page = page;
+  this.page = page;
   this.productTitle = page.getByRole('heading', { name: 'Blue Jeans' });
   this.productPhoto = page.getByRole('img', { name: 'Picture of Blue Jeans' });
   this.availability = page.getByText('In stock');

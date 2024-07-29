@@ -24,8 +24,6 @@ export class Shopping_cart {
   readonly continueCheckoutBtn: Locator;
   readonly confirmBtn: Locator;
   readonly successMessage: Locator;
-
-  // Billing 
   readonly firstNameInput: Locator;
   readonly lastNameInput: Locator;
   readonly emailInput: Locator;
@@ -34,7 +32,6 @@ export class Shopping_cart {
   readonly addresInput: Locator;
   readonly postalCodeInput: Locator;
   readonly phoneNumberInput: Locator;
-  
 
   constructor(page: Page) {
     this.page = page;
@@ -75,7 +72,6 @@ export class Shopping_cart {
     this.checkoutAsGuestBtn = page.getByRole("button", {
       name: "Checkout as Guest",
     });
-    // Billing
     this.firstNameInput = page.getByLabel('First name:');
     this.lastNameInput = page.getByLabel('Last name:');
     this.emailInput = page.getByLabel('Email:');
@@ -90,8 +86,7 @@ export class Shopping_cart {
     this.successMessage = page.getByText('Your order has been successfully processed!');
 
   }
-  //Review
-  //Dodala sam ovaj load ovdje da vidimo hoce ovo popraviti flakyness testova
+ 
   async goto() {
     await this.page.goto("https://demowebshop.tricentis.com/cart", {
       waitUntil: "load",

@@ -47,7 +47,7 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
   test("TEST 4 Verify that the login will not be successful if the wrong email is entered", 
   async ({ page }) => {
 
-    await login.emailInput.fill("mpw.diplomski@gmail.com");
+    await login.emailInput.fill('mpw.diplomski@gmail.com');
     await login.passwordInput.fill("dipl987");
     await login.loginBtn.click();
     await expect(login.logInFailedMessage).toBeVisible();

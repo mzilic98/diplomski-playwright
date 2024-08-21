@@ -17,10 +17,10 @@ To get started with this project, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/holjevacmaria/zilic-diplomski 
+git clone https://github.com/mzilic98/diplomski-playwright
 
 # Navigate to the project directory
-cd zilic-diplomski
+cd diplomski-playwright
 
 # Install dependencies
 npm install

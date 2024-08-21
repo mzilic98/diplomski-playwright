@@ -27,9 +27,9 @@ test.describe("Verify that registration of the Demo web shop page works as inten
       
       test.slow();
       await register.femaleCheckbox.click();
-      await register.firstNameInput.fill("Marija");
-      await register.lastNameInput.fill("QA");
-      await generateUniqueUserEmail(page, "mpw4");
+      await register.firstNameInput.fill('Marija');
+      await register.lastNameInput.fill('QA');
+      await generateUniqueUserEmail(page, 'mpw4');
       await expect(page).toHaveURL(
         '/registerresult/1'
       );
@@ -42,11 +42,11 @@ test.describe("Verify that registration of the Demo web shop page works as inten
   async () => {
 
     await register.femaleCheckbox.click();
-    await register.firstNameInput.fill("Marija");
-    await register.lastNameInput.fill("QA");
-    await register.emailInput.fill("invalidEmail#$%&");
-    await register.passwordInput.fill("dipl987");
-    await register.confirmPasswordInput.fill("dipl987");
+    await register.firstNameInput.fill('Marija');
+    await register.lastNameInput.fill('QA');
+    await register.emailInput.fill('invalidEmail#$%&');
+    await register.passwordInput.fill('dipl987');
+    await register.confirmPasswordInput.fill('dipl987');
     await register.registerBtn.click();
 
     await expect(register.invalidEmail).toBeVisible();
@@ -57,11 +57,11 @@ test.describe("Verify that registration of the Demo web shop page works as inten
   async () => {
 
     await register.femaleCheckbox.click();
-    await register.firstNameInput.fill("Marija");
-    await register.lastNameInput.fill("QA");
-    await register.emailInput.fill("mpw+1@gmail.com");
-    await register.passwordInput.fill("dipl987");
-    await register.confirmPasswordInput.fill("dipl987");
+    await register.firstNameInput.fill('Marija');
+    await register.lastNameInput.fill('QA');
+    await register.emailInput.fill('mpw+1@gmail.com');
+    await register.passwordInput.fill('dipl987');
+    await register.confirmPasswordInput.fill('dipl987');
     await register.registerBtn.click();
 
     await expect(register.emailInUse).toBeVisible();
@@ -71,8 +71,8 @@ test.describe("Verify that registration of the Demo web shop page works as inten
   test("TEST 5 Verify password input field for minimum characters allowed", 
   async () => {
 
-    await register.passwordInput.fill("123");
-    await register.confirmPasswordInput.fill("123");
+    await register.passwordInput.fill('123');
+    await register.confirmPasswordInput.fill('123');
     await expect(register.passwordMinimum).toBeVisible();
   });
 
@@ -80,11 +80,11 @@ test.describe("Verify that registration of the Demo web shop page works as inten
   async () => {
 
     await register.maleCheckbox.click();
-    await register.firstNameInput.fill("Marko");
-    await register.lastNameInput.fill("QA");
-    await register.emailInput.fill("markopw+2@gmail.com");
-    await register.passwordInput.fill("diplomski23");
-    await register.confirmPasswordInput.fill("diplomski35");
+    await register.firstNameInput.fill('Marko');
+    await register.lastNameInput.fill('QA');
+    await register.emailInput.fill('markopw+2@gmail.com');
+    await register.passwordInput.fill('diplomski23');
+    await register.confirmPasswordInput.fill('diplomski35');
     await register.registerBtn.click();
 
     await expect(register.passwordNotMatch).toBeVisible();

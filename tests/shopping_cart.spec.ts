@@ -74,14 +74,14 @@ test.describe("Verify that the shopping cart behavior of the Demo web shop page 
     await shopping_cart.checkoutBtn.click();
     await shopping_cart.checkoutAsGuestBtn.click();
 
-    await shopping_cart.firstNameInput.fill("Marija");
-    await shopping_cart.lastNameInput.fill("QA");
-    await shopping_cart.emailInput.fill("mpw@gmail.com");
-    await shopping_cart.countryInput.selectOption("Croatia");
-    await shopping_cart.cityInput.fill("Osijek");
-    await shopping_cart.addresInput.fill("Ul. Lorenza Jagera");
-    await shopping_cart.postalCodeInput.fill("31000");
-    await shopping_cart.phoneNumberInput.fill("987283947");
+    await shopping_cart.firstNameInput.fill('Marija');
+    await shopping_cart.lastNameInput.fill('QA');
+    await shopping_cart.emailInput.fill('mpw@gmail.com');
+    await shopping_cart.countryInput.selectOption('Croatia');
+    await shopping_cart.cityInput.fill('Osijek');
+    await shopping_cart.addresInput.fill('Ul. Lorenza Jagera');
+    await shopping_cart.postalCodeInput.fill('31000');
+    await shopping_cart.phoneNumberInput.fill('987283947');
     await shopping_cart.continueCheckoutBtn.click();
     await page.waitForTimeout(1000);
     await shopping_cart.continueCheckoutBtn.click();

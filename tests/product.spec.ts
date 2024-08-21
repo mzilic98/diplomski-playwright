@@ -22,8 +22,8 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
 
     await expect(product.qtyLabel).toBeVisible();
     await expect(product.qtyInput).toBeVisible();
-    await product.qtyInput.fill("3");
-    await expect(product.qtyInput).toHaveValue("3");
+    await product.qtyInput.fill('3');
+    await expect(product.qtyInput).toHaveValue('3');
   });
 
   test("TEST 3 Verify that the Add to cart button works as expected", 

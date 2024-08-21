@@ -48,7 +48,7 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
   async ({ page }) => {
 
     await login.emailInput.fill('mpw.diplomski@gmail.com');
-    await login.passwordInput.fill("dipl987");
+    await login.passwordInput.fill('dipl987');
     await login.loginBtn.click();
     await expect(login.logInFailedMessage).toBeVisible();
     await expect(login.loggedInUserMail).toBeHidden();
@@ -94,7 +94,7 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
       '/passwordrecovery'
     );
     await expect(login.passwordRecovery).toBeVisible();
-    await login.recoveryEmail.fill("mzqa0%&'gmail");
+    await login.recoveryEmail.fill('mzqa0%&"gmail');
     await login.recoverBtn.click();
     await expect(login.wrongEmailMessage).toBeVisible();
   });

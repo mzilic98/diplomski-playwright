@@ -45,6 +45,6 @@ export class Login {
   };
 
   async goto() {
-    await this.page.goto("https://demowebshop.tricentis.com/login");
+    await this.page.goto('/login');
   }
 }

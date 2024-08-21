@@ -59,6 +59,6 @@ export class Register {
   }
 
   async goto() {
-    await this.page.goto("https://demowebshop.tricentis.com/register");
+    await this.page.goto('/register');
   }
 }

@@ -39,7 +39,7 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
 
     await product.emailAFriendBtn.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/productemailafriend/36"
+      '/productemailafriend/36'
     );
   });
 
@@ -48,7 +48,7 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
 
     await product.addToCompareListBtn.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/compareproducts"
+      '/compareproducts'
     );
   });
 
@@ -57,7 +57,7 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
 
     await product.addReview.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/productreviews/36"
+      '/productreviews/36'
     );
   });
 });

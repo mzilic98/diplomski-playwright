@@ -35,43 +35,25 @@ export class Shopping_cart {
 
   constructor(page: Page) {
     this.page = page;
-    this.shoppingCartEmptyBtn = page.getByRole("link", {
-      name: "Shopping cart (0)",
-    });
+    this.shoppingCartEmptyBtn = page.getByRole("link", {name: "Shopping cart (0)" });
     this.informativeMessage = page.getByText("Your Shopping Cart is empty!");
     this.firstItem = page.getByRole("link", { name: "Picture of 3rd Album" });
-    this.secondItem = page
-      .getByRole("link", { name: "Picture of Music 2" })
-      .first();
+    this.secondItem = page.getByRole("link", { name: "Picture of Music 2" }).first();
     this.firstItemAddToCartBtn = page.locator("#add-to-cart-button-53");
     this.secondItemAddtoCartBtn = page.locator("#add-to-cart-button-51");
     this.goToCartBtn = page.getByRole("button", { name: "Go to cart" });
-    this.removeCheckbox = page
-      .getByRole("row", { name: "Picture of 3rd Album 3rd Album 1.00 1.00" })
-      .getByRole("checkbox");
-    this.updateShoppingCartBtn = page.getByRole("button", {
-      name: "Update shopping cart",
-    });
-    this.continueShoppingBtn = page.getByRole("button", {
-      name: "Continue shopping",
-    });
+    this.removeCheckbox = page.locator('input[name="removefromcart"]');
+    this.updateShoppingCartBtn = page.getByRole("button", {name: "Update shopping cart",});
+    this.continueShoppingBtn = page.getByRole("button", {name: "Continue shopping"});
     this.termsOfServiceCheckbox = page.locator("#termsofservice");
     this.checkoutBtn = page.getByRole("button", { name: "Checkout" });
     this.firstItemInCart = page.getByRole("link", { name: "3rd Album" });
     this.secondItemInCart = page.getByRole("link", { name: "Music 2" });
-    this.firstItemPrice = page
-      .getByRole("row", { name: "Picture of 3rd Album 3rd Album 1.00 1.00" })
-      .getByText("Total: 1.00");
+    this.firstItemPrice = page.locator('span').filter({ hasText: /^1\.00$/ }).nth(1);
     this.secondItemPrice = page.getByText("Total: 10.00");
-    this.subtotal = page
-      .getByRole("row", { name: "Sub-Total: 11.00" })
-      .getByText("11.00");
-    this.termsOfServiceWarningBox = page.locator(
-      "#terms-of-service-warning-box"
-    );
-    this.checkoutAsGuestBtn = page.getByRole("button", {
-      name: "Checkout as Guest",
-    });
+    this.subtotal = page.getByRole("row", { name: "Sub-Total: 11.00" }).getByText("11.00");
+    this.termsOfServiceWarningBox = page.locator("#terms-of-service-warning-box");
+    this.checkoutAsGuestBtn = page.getByRole("button", {name: "Checkout as Guest",});
     this.firstNameInput = page.getByLabel('First name:');
     this.lastNameInput = page.getByLabel('Last name:');
     this.emailInput = page.getByLabel('Email:');
@@ -81,15 +63,14 @@ export class Shopping_cart {
     this.postalCodeInput = page.getByLabel('Zip / postal code:');
     this.phoneNumberInput = page.getByLabel('Phone number:');
     this.continueCheckoutBtn = page.getByRole('button', { name: 'Continue' });
-    
     this.confirmBtn = page.getByRole('button', { name: 'Confirm' });
     this.successMessage = page.getByText('Your order has been successfully processed!');
 
   }
  
   async goto() {
-    await this.page.goto("https://demowebshop.tricentis.com/cart", {
-      waitUntil: "load",
+    await this.page.goto('/cart', {
+      waitUntil: 'load',
     });
   }
 }

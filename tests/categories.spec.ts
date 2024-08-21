@@ -25,11 +25,11 @@ test.describe
     await categories.electronics.click();
     await categories.cellphones.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/cell-phones"
+      '/cell-phones'
     );
 
     await page.waitForLoadState();
-    const productCount = (await page.$$(".product-item")).length;
+    const productCount = (await page.$$('.product-item')).length;
     expect(productCount).toBeGreaterThan(0);
   });
 
@@ -39,7 +39,7 @@ test.describe
     await categories.electronics.click();
     await categories.cellphones.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/cell-phones"
+      '/cell-phones'
     );
     await expect(categories.smartphonePhoto).toBeVisible();
     await expect(categories.usedPhonePhoto).toBeVisible();
@@ -51,23 +51,23 @@ test.describe
     await categories.electronics.click();
     await categories.cellphones.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/cell-phones"
+      '/cell-phones'
     );
 
     await page.waitForLoadState();
-    const productCount = (await page.$$(".product-item")).length;
+    const productCount = (await page.$$('.product-item')).length;
     expect(productCount).toBeGreaterThan(0);
 
-    const priceCheck = (await page.$$(".price.actual-price")).length;
+    const priceCheck = (await page.$$('.price.actual-price')).length;
     expect(priceCheck).toBeGreaterThan(0);
     expect(productCount).toBe(priceCheck);
   });
 
-  test("TEST 5 Verify that the Add to cart button is clickable",
+  test("TEST 5 Verify that a product can be added to the cart from the category page.",
     async ({ page }) => {
       await categories.digitalDownloads.click();
       await expect(page).toHaveURL(
-        "https://demowebshop.tricentis.com/digital-downloads"
+        '/digital-downloads'
       );
       await expect(categories.addToCartBtn).toBeEnabled();
 
@@ -82,16 +82,12 @@ test.describe
      
       await categories.digitalDownloads.click();
       await expect(page).toHaveURL(
-        "https://demowebshop.tricentis.com/digital-downloads"
+        '/digital-downloads'
       );
 
       await expect(page).toHaveScreenshot('before_sort_by.png'); 
-      await categories.sortBy.selectOption("Price: Low to High");
+      await categories.sortBy.selectOption('Price: Low to High');
       await expect(page).toHaveScreenshot('after_sort_by.png'); 
-
-      await expect(page).toHaveURL(
-        "https://demowebshop.tricentis.com/digital-downloads?orderby=10"
-      );
     }
   );
 

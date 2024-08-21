@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
-import { Shopping_cart } from "../pages/shoppingc_cart.page";
+import { Shopping_cart } from "../pages/shopping_cart.page";
 
 test.describe("Verify that the shopping cart behavior of the Demo web shop page work as intended", () => {
   let shopping_cart: Shopping_cart;
   test.beforeEach(async ({ page }) => {
     shopping_cart = new Shopping_cart(page);
 
-    await page.goto("https://demowebshop.tricentis.com/album-3");
+    await page.goto("/album-3");
     await shopping_cart.firstItemAddToCartBtn.click();
     await page.waitForTimeout(1000); 
     await shopping_cart.goto();
@@ -20,7 +20,7 @@ test.describe("Verify that the shopping cart behavior of the Demo web shop page 
   });
 
   test("TEST 2 Verify that the item price is visible in the shopping cart", 
-  async () => {
+  async ({}) => {
 
     await expect(shopping_cart.firstItemPrice).toBeVisible();
   });
@@ -29,24 +29,24 @@ test.describe("Verify that the shopping cart behavior of the Demo web shop page 
   async ({ page }) => {
 
     await page.goto(
-      "https://demowebshop.tricentis.com/digital-downloads"
+      '/digital-downloads'
     );
     await shopping_cart.secondItem.click();
     await shopping_cart.secondItemAddtoCartBtn.click();
-
     await page.waitForTimeout(1000);
     await shopping_cart.goto();
-
     await expect(shopping_cart.firstItemPrice).toBeVisible();
     await expect(shopping_cart.secondItemPrice).toBeVisible();
     await expect(shopping_cart.subtotal).toHaveText("11.00");
   });
 
   test("TEST 4 Verify that you can remove the item from the cart", 
-  async () => {
-
+  async ({ page }) => {
+    await page.pause();
     await shopping_cart.removeCheckbox.click();
+    await page.pause();
     await shopping_cart.updateShoppingCartBtn.click();
+    await page.pause();
     await expect(shopping_cart.firstItemInCart).toBeHidden();
   });
 
@@ -55,11 +55,11 @@ test.describe("Verify that the shopping cart behavior of the Demo web shop page 
 
     await shopping_cart.continueShoppingBtn.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/"
+      '/'
     );
   });
 
-  test("TEST 6 Verify that the Terms of service button is required", 
+  test("TEST 6 Verify that the Terms of service checkbox is required", 
   async () => {
 
     await expect(shopping_cart.termsOfServiceCheckbox).not.toBeChecked();
@@ -83,7 +83,6 @@ test.describe("Verify that the shopping cart behavior of the Demo web shop page 
     await shopping_cart.postalCodeInput.fill("31000");
     await shopping_cart.phoneNumberInput.fill("987283947");
     await shopping_cart.continueCheckoutBtn.click();
-    
     await page.waitForTimeout(1000);
     await shopping_cart.continueCheckoutBtn.click();
     await page.waitForTimeout(1000);
@@ -94,7 +93,7 @@ test.describe("Verify that the shopping cart behavior of the Demo web shop page 
   });
 
   test("TEST 8 Verify that the empty state of the shopping cart is displayed correctly", 
-  async () => {
+  async ({}) => {
 
     await shopping_cart.removeCheckbox.click();
     await shopping_cart.updateShoppingCartBtn.click();

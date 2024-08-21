@@ -32,6 +32,6 @@ export class Product {
   };
 
   async goto() {
-    await this.page.goto("https://demowebshop.tricentis.com/blue-jeans");
+    await this.page.goto('/blue-jeans');
   }
 }

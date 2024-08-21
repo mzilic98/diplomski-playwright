@@ -1,6 +1,6 @@
 import { test, expect, chromium } from "@playwright/test";
 import { Login } from "../pages/login.page";
-import fs from "fs";
+// import fs from "fs";
 
 test.describe("Verify that login of the Demo web shop page works as intended", () => {
   let login: Login;
@@ -19,26 +19,28 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
   test("TEST 2 Verify that user can successfully log in if valid data is given", 
   async ({ page }) => {
 
-    await login.emailInput.fill("mpw+1@gmail.com");
-    await login.passwordInput.fill("dipl987");
+    await login.emailInput.fill('mpw+1@gmail.com');
+    await login.passwordInput.fill('dipl987');
     await login.loginBtn.click();
+    await page.pause();
     await expect(login.logInFailedMessage).toBeHidden();
     await expect(login.loggedInUserMail).toBeVisible();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/"
+      "/"
     );
   });
 
   test("TEST 3 Verify that the login will not be successful if the wrong password is entered", 
   async ({ page }) => {
 
-    await login.emailInput.fill("mpw+1@gmail.com");
-    await login.passwordInput.fill("diploomskiii");
+    await login.emailInput.fill('mpw+1@gmail.com');
+    await login.passwordInput.fill('diploomskiii');
     await login.loginBtn.click();
     await expect(login.logInFailedMessage).toBeVisible();
+    await page.pause();
     await expect(login.loggedInUserMail).toBeHidden();
     await expect(page).not.toHaveURL(
-      "https://demowebshop.tricentis.com/"
+      "/"
     );
   });
 
@@ -51,7 +53,7 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
     await expect(login.logInFailedMessage).toBeVisible();
     await expect(login.loggedInUserMail).toBeHidden();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/login"
+      '/login'
     );
   });
 
@@ -63,7 +65,7 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
     await login.loginBtn.click();
     await expect(login.loggedInUserMail).toBeVisible();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com"
+      '/'
     );
     await expect(login.logOutNavBar).toBeEnabled;
     await login.logOutNavBar.click();
@@ -76,7 +78,7 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
 
     await login.forgotPasswordLabel.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/passwordrecovery"
+      '/passwordrecovery'
     );
     await expect(login.passwordRecovery).toBeVisible();
     await login.recoveryEmail.fill("mzqa57@gmail.com");
@@ -89,7 +91,7 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
 
     await login.forgotPasswordLabel.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/passwordrecovery"
+      '/passwordrecovery'
     );
     await expect(login.passwordRecovery).toBeVisible();
     await login.recoveryEmail.fill("mzqa0%&'gmail");
@@ -102,7 +104,7 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
 
     await login.forgotPasswordLabel.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/passwordrecovery"
+      '/passwordrecovery'
     );
     await expect(login.passwordRecovery).toBeVisible();
     await login.recoveryEmail.fill("mzqa57+diplomski999@gmail.com");
@@ -115,7 +117,7 @@ test.describe("Verify that login of the Demo web shop page works as intended", (
 
     await login.registerBtn.click();
     await expect(page).toHaveURL(
-      "https://demowebshop.tricentis.com/register"
+      '/register'
     );
   });
 });

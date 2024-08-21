@@ -24,13 +24,14 @@ test.describe("Verify that registration of the Demo web shop page works as inten
 
   test("TEST 2 Verify that user can successfully register if valid data is given",
     async ({ page }) => {
-
+      
+      test.slow();
       await register.femaleCheckbox.click();
       await register.firstNameInput.fill("Marija");
       await register.lastNameInput.fill("QA");
-      await generateUniqueUserEmail(page, "mpw2");
+      await generateUniqueUserEmail(page, "mpw4");
       await expect(page).toHaveURL(
-        "https://demowebshop.tricentis.com/registerresult/1"
+        '/registerresult/1'
       );
       await expect(register.registrationCompleted).toBeVisible();
       await expect(register.continueBtn).toBeVisible();

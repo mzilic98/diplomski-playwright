@@ -7,14 +7,12 @@ export async function generateUniqueUserEmail(page, email: string): Promise<stri
 
   while (true) {
     const checkedEmail = `${email}+${number}@gmail.com`;
-    // await page.pause();
-   
+  
     await page?.fill("#Email", checkedEmail);
     await page?.fill("#Password", "hjrks987");
     await page?.fill("#ConfirmPassword", "hjrks987");
     await page?.click("#register-button"); 
 
-    // OVO RADIIIIII - malo duze traje jer sam postavila timoute ali bitno da radi!!
     const errorMessageElement = await page.waitForSelector(".message-error", { timeout: 2000 }).catch(() => null);
     const registrationCompletedElement = await page.waitForSelector(".result", { timeout: 2000 }).catch(() => null);
 
@@ -35,7 +33,6 @@ export async function generateUniqueUserEmail(page, email: string): Promise<stri
       throw new Error("Neither error message nor registration completion message was found.");
     }
 
-    
   }
   
 }

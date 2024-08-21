@@ -37,7 +37,7 @@ test.describe("Verify that the shopping cart behavior of the Demo web shop page 
     await shopping_cart.goto();
     await expect(shopping_cart.firstItemPrice).toBeVisible();
     await expect(shopping_cart.secondItemPrice).toBeVisible();
-    await expect(shopping_cart.subtotal).toHaveText("11.00");
+    await expect(shopping_cart.subtotal).toHaveText('11.00');
   });
 
   test("TEST 4 Verify that you can remove the item from the cart", 

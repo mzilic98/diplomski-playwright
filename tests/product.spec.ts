@@ -13,7 +13,7 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
 
     await expect(product.productTitle).toBeVisible();
     await expect(product.productPhoto).toBeVisible();
-    await expect(product.availability).toContainText("In stock");
+    await expect(product.availability).toContainText('In stock');
     await expect(product.productPrice).toBeVisible();
   });
 

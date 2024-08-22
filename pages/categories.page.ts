@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page } from '@playwright/test';
 
 export class Categories {
   readonly page: Page;
@@ -41,14 +41,14 @@ export class Categories {
     .getByRole('link', { name: 'Gift Cards' });
     this.cellphones = page.getByRole('heading', { name: 'Cell phones' })
     .getByRole('link', { name: 'Cell phones' });
-    this.productItem = page.locator(".product-item");
+    this.productItem = page.locator('.product-item');
     this.smartphonePhoto = page.locator('img[alt="Picture of Smartphone"]');
     this.usedPhonePhoto = page.locator('img[alt="Picture of Used phone"]');
     this.phoneCoverPhoto = page.locator('img[alt="Picture of Phone Cover"]');
     this.smartphoneTitle = page.getByRole('link', { name: 'Smartphone', exact: true });
     this.usedPhoneTitle = page.getByRole('link', { name: 'Used phone', exact: true });
     this.phoneCoverTitle = page.getByRole('link', { name: 'Phone Cover', exact: true });
-    this.priceCheck = page.locator(".price.actual-price");
+    this.priceCheck = page.locator('.price.actual-price');
     this.addToCartBtn = page.locator('div').filter({ hasText: '1.00 Add to cart' })
     .getByRole('button', { name: 'Add to cart' }).first();
     this.shoppingCart = page.getByRole('link', { name: 'Shopping cart (1)' });

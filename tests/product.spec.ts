@@ -1,14 +1,14 @@
-import { test, expect } from "@playwright/test";
-import { Product } from "../pages/product.page";
+import { test, expect } from '@playwright/test';
+import { Product } from '../pages/product.page';
 
-test.describe("Verify that the product behavior of the Demo web shop page work as intended", () => {
+test.describe('Verify that the product behavior of the Demo web shop page work as intended', () => {
   let product: Product;
   test.beforeEach(async ({ page }) => {
     product = new Product(page);
     await product.goto();
   });
 
-  test("TEST 1 Validating Essential Product Information", 
+  test('TEST 1 Validating Essential Product Information', 
   async () => {
 
     await expect(product.productTitle).toBeVisible();
@@ -17,7 +17,7 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
     await expect(product.productPrice).toBeVisible();
   });
 
-  test("TEST 2 Verify that the user can change the quantity of the product",
+  test('TEST 2 Verify that the user can change the quantity of the product',
   async () => {
 
     await expect(product.qtyLabel).toBeVisible();
@@ -26,7 +26,7 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
     await expect(product.qtyInput).toHaveValue('3');
   });
 
-  test("TEST 3 Verify that the Add to cart button works as expected", 
+  test('TEST 3 Verify that the Add to cart button works as expected', 
   async () => {
 
     await product.addToCartBtn.click();
@@ -34,7 +34,7 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
     await expect(product.addToCartSucces).toBeVisible();
   });
 
-  test("TEST 4 Verify that the Email a friend button on the product page is working correctly", 
+  test('TEST 4 Verify that the Email a friend button on the product page is working correctly', 
   async ({ page }) => {
 
     await product.emailAFriendBtn.click();
@@ -43,7 +43,7 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
     );
   });
 
-  test("TEST 5 Verify that the Compare list button on the product page is working correctly", 
+  test('TEST 5 Verify that the Compare list button on the product page is working correctly', 
   async ({  page }) => {
 
     await product.addToCompareListBtn.click();
@@ -52,7 +52,7 @@ test.describe("Verify that the product behavior of the Demo web shop page work a
     );
   });
 
-  test("TEST 6 Verify that the Add your Review link on the product page is clickable", 
+  test('TEST 6 Verify that the Add your Review link on the product page is clickable', 
   async ({ page }) => {
 
     await product.addReview.click();

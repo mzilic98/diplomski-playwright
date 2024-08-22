@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page } from '@playwright/test';
 
 export class Product {
   readonly page: Page;
@@ -23,7 +23,7 @@ export class Product {
   this.productPrice = page.getByText('1.00', { exact: true });
   this.addReview = page.getByRole('link', { name: 'Add your review' });
   this.qtyLabel = page.getByText('Qty:');
-  this.qtyInput = page.locator("#addtocart_36_EnteredQuantity");
+  this.qtyInput = page.locator('#addtocart_36_EnteredQuantity');
   this.addToCartBtn = page.locator('#add-to-cart-button-36');
   this.emailAFriendBtn = page.getByRole('button', { name: 'Email a friend' });
   this.addToCompareListBtn = page.getByRole('button', { name: 'Add to compare list' });

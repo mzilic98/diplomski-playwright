@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
-import { Register } from "../pages/register.page";
-import { generateUniqueUserEmail } from "../utils/helpers/generateUniqueUserEmail";
+import { test, expect } from '@playwright/test';
+import { Register } from '../pages/register.page';
+import { generateUniqueUserEmail } from '../utils/helpers/generateUniqueUserEmail';
 
-test.describe("Verify that registration of the Demo web shop page works as intended", () => {
+test.describe('Verify that registration of the Demo web shop page works as intended', () => {
   let register: Register;
 
   test.beforeEach(async ({ page }) => {
@@ -10,7 +10,7 @@ test.describe("Verify that registration of the Demo web shop page works as inten
     await register.goto();
   });
 
-  test("TEST 1 Verify that validation of the register form works as intended", 
+  test('TEST 1 Verify that validation of the register form works as intended', 
   async () => {
 
     await register.registerBtn.click();
@@ -22,7 +22,7 @@ test.describe("Verify that registration of the Demo web shop page works as inten
     await expect(register.registerBtn).toBeVisible();
   });
 
-  test("TEST 2 Verify that user can successfully register if valid data is given",
+  test('TEST 2 Verify that user can successfully register if valid data is given',
     async ({ page }) => {
       
       test.slow();
@@ -38,7 +38,7 @@ test.describe("Verify that registration of the Demo web shop page works as inten
     }
   );
 
-  test("TEST 3 Verify email input error message if the email form is invalid", 
+  test('TEST 3 Verify email input error message if the email form is invalid', 
   async () => {
 
     await register.femaleCheckbox.click();
@@ -53,7 +53,7 @@ test.describe("Verify that registration of the Demo web shop page works as inten
     await expect(register.registrationCompleted).toBeHidden();
   });
 
-  test("TEST 4 Verify email input error message if the email form is already in use", 
+  test('TEST 4 Verify email input error message if the email form is already in use', 
   async () => {
 
     await register.femaleCheckbox.click();
@@ -68,7 +68,7 @@ test.describe("Verify that registration of the Demo web shop page works as inten
     await expect(register.registrationCompleted).toBeHidden();
   });
 
-  test("TEST 5 Verify password input field for minimum characters allowed", 
+  test('TEST 5 Verify password input field for minimum characters allowed', 
   async () => {
 
     await register.passwordInput.fill('123');
@@ -76,7 +76,7 @@ test.describe("Verify that registration of the Demo web shop page works as inten
     await expect(register.passwordMinimum).toBeVisible();
   });
 
-  test("TEST 6 Verify error message if password is not the same in both password fields", 
+  test('TEST 6 Verify error message if password is not the same in both password fields', 
   async () => {
 
     await register.maleCheckbox.click();
